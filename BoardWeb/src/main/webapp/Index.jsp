@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h3>Hellow, world!!</h3>
+	<a href="../BoardWeb/main.do">main 페이지로 이동</a>
 </body>
 </html>

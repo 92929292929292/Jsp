@@ -8,7 +8,8 @@ import co.yedam.vo.BoardVO;
 //기능의 실행은 mapper 실행.
 
 public interface BoardService {
-	List<BoardVO> boardList();
+	List<BoardVO> boardList(int page);
+	int boardTotal();
 	BoardVO getBoard(int bno);
 	boolean addBoard(BoardVO bvo);
 	boolean editBoard(BoardVO bvo);

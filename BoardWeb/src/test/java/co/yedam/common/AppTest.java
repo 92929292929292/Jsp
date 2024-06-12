@@ -1,11 +1,11 @@
 package co.yedam.common;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import co.yedam.mapper.BoardMapper;
+import co.yedam.service.BoardService;
+import co.yedam.service.BoardServiceImpl;
 import co.yedam.vo.BoardVO;
 
 public class AppTest {
@@ -16,6 +16,7 @@ public class AppTest {
 		//interface - 구현객체.
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		BoardVO bvo = new BoardVO();
+		BoardService svc = new BoardServiceImpl(); 
 		
 //		bvo.setTitle("안녕");
 //		bvo.setContent("감사해요");
@@ -24,18 +25,14 @@ public class AppTest {
 //		mapper.insertBoard(bvo);
 //		sqlSession.commit();
 		
-		
 //		sqlSession.commit();
-//		
-//		bvo.setBoardNo(4);
-//		bvo.setContent("잘 있어요");
-//		mapper.updateBoard(bvo);
-//		
 		
-		List<BoardVO>list = mapper.boardList();
-		for(BoardVO bvo2:list) {
-			System.out.println(bvo2.toString());
-		}
+		System.out.println(svc.getBoard(1));
+		
+//		List<BoardVO>list = mapper.boardListPaging(1);
+//		for(BoardVO bvo2:list) {
+//			System.out.println(bvo2.toString());
+//		}
 		
 //		Student std = new Student();
 ////		std.setStdNo("S0010");

@@ -15,8 +15,13 @@ public class BoardServiceImpl implements BoardService{
 	BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 	
 	@Override
-	public List<BoardVO> boardList() {
-		return mapper.boardList();
+	public List<BoardVO> boardList(int page) {
+		return mapper.boardListPaging(page);
+	}
+	
+	@Override
+	public int boardTotal() {
+		return mapper.getTotalCnt();
 	}
 
 	@Override

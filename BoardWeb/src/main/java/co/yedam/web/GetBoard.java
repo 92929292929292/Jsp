@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
+import co.yedam.common.PageDTO;
 import co.yedam.service.BoardService;
 import co.yedam.service.BoardServiceImpl;
 import co.yedam.vo.BoardVO;
@@ -25,6 +26,10 @@ public class GetBoard implements Control {
 		
 		req.setAttribute("board", brd);
 		req.setAttribute("page", page);
+		int totalCnt = svc.boardTotal();
+		PageDTO dto = new PageDTO(Integer.parseInt(page), totalCnt);
+		req.setAttribute("paging", dto);
+		
 		req.getRequestDispatcher("WEB-INF/view/board.jsp").forward(req, resp);
 	}
 

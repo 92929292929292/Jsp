@@ -10,8 +10,8 @@
 		Student student = (Student)request.getAttribute("student");
 		List<Student> list = (List<Student>)request.getAttribute("studentList");
 	%>
-	<p>학생번호: <%=student.getStdNo() %></p>
-	<p>학생이름: <%=student.getStdName() %></p>
+	<p>학생번호: ${student.stdNo}</p>
+	<p>학생이름: ${student.stdName}</p>
 	
 	<h3>학생목록</h3>
 	<ul>

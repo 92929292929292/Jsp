@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="../public/Header.jsp" %>
 <h3>학생등록화면</h3>
-<%
-	String msg = (String) request.getAttribute("message");
-%>
-<%
-	if (msg != null){
-%>
-	<p><%=msg %></p>
-<%} %>
+
+<c:if test="${!empty message}">
+<p>${message}</p>
+</c:if>
+
 <form action="AddStudent.do">
 <table class="table">
  <tr>

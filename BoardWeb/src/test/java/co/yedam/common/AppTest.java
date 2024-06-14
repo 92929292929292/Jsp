@@ -7,17 +7,15 @@ import co.yedam.mapper.BoardMapper;
 import co.yedam.service.BoardService;
 import co.yedam.service.BoardServiceImpl;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.SearchVO;
 
 public class AppTest {
 	public static void main(String[] args) {
 		SqlSessionFactory sqlSessionFactory =DataSource.getInstance();
-		SqlSession sqlSession = sqlSessionFactory.openSession();
+		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
 		//interface - 구현객체.
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		BoardVO bvo = new BoardVO();
-		BoardService svc = new BoardServiceImpl(); 
-		
 //		bvo.setTitle("안녕");
 //		bvo.setContent("감사해요");
 //		bvo.setWriter("user11");
@@ -27,7 +25,9 @@ public class AppTest {
 		
 //		sqlSession.commit();
 		
-		System.out.println(svc.getBoard(1));
+		SearchVO search = new SearchVO(1, "t", "깅");
+		
+		mapper.boardListPaging(search).forEach(bvo -> System.out.println(bvo));
 		
 //		List<BoardVO>list = mapper.boardListPaging(1);
 //		for(BoardVO bvo2:list) {

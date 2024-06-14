@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="myTag"%>
-<jsp:include page="../public/Header.jsp"/>
+
 <h3>로그인화면</h3>
 <myTag:line/>
 <!-- JSP standard tag library -->
@@ -18,4 +18,3 @@
 	</tr>
 </table>
 </form>
-<jsp:include page="../public/Footer.jsp"/>

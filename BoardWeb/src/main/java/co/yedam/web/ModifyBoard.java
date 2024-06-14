@@ -20,6 +20,8 @@ public class ModifyBoard implements Control {
 		String tit = req.getParameter("title");
 		String con = req.getParameter("content");
 		String page = req.getParameter("page");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
 		
 		BoardService bs = new BoardServiceImpl();
 		BoardVO bvo = new BoardVO();
@@ -27,10 +29,11 @@ public class ModifyBoard implements Control {
 		bvo.setBoardNo(Integer.parseInt(bno));
 		bvo.setTitle(tit);
 		bvo.setContent(con);
+
 		
 		if (bs.editBoard(bvo)) {
 			System.out.println("정상수정...");
-			resp.sendRedirect("getBoard.do?bno="+bvo.getBoardNo()+"&page="+page);
+			resp.sendRedirect("getBoard.do?bno="+bvo.getBoardNo()+"&page="+page+"&searchCondition="+sc+"&keyword="+kw);
 		} else {
 			System.out.println("수정실패...");
 			req.setAttribute("message", "처리중 오류가 발생.");

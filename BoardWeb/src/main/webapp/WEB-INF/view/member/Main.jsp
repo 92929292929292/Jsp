@@ -2,8 +2,7 @@
 <%@page import="co.yedam.vo.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@include file="Header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 	<h3>main 페이지</h3>
 	<%
@@ -19,5 +18,3 @@
 	    <li>학번: <%=std.getStdNo() %> 이름: <a href="product.do?stdNo=<%=std.getStdNo() %>"><%=std.getStdName() %></a> 연락처: <%=std.getPhone() %></li>
 	    <%} %>
 	</ul>
-
-<%@include file="Footer.jsp" %>

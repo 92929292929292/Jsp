@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import co.yedam.common.DataSource;
 import co.yedam.mapper.BoardMapper;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.SearchVO;
 
 //업무프로세스를 따라 실행하기 위한 서비스
 
@@ -15,13 +16,13 @@ public class BoardServiceImpl implements BoardService{
 	BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 	
 	@Override
-	public List<BoardVO> boardList(int page) {
-		return mapper.boardListPaging(page);
+	public List<BoardVO> boardList(SearchVO search) {
+		return mapper.boardListPaging(search);
 	}
 	
 	@Override
-	public int boardTotal() {
-		return mapper.getTotalCnt();
+	public int boardTotal(SearchVO search) {
+		return mapper.getTotalCnt(search);
 	}
 
 	@Override

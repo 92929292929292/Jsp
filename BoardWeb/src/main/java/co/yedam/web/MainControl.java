@@ -33,7 +33,7 @@ public class MainControl implements Control {
 		req.setAttribute("student", student);
 		req.setAttribute("studentList", list);
 		
-		req.getRequestDispatcher("WEB-INF/public/Main.jsp").forward(req, resp);
+		req.getRequestDispatcher("member/Main.tiles").forward(req, resp);
 	}
 
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../public/Header.jsp"%>
+
 
 <form action="addBoard.do">
 <table class="table">
@@ -18,4 +18,3 @@
  </tr>
 </table>
 </form>
-<%@include file="../public/Footer.jsp"%>

@@ -3,11 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<jsp:include page="../public/Header.jsp"/>
-
 <form name ="myForm" action="removeForm.do>">
 <input type="hidden" value="${board.boardNo }" name="bno">
-<input type="hidden" value="${paging.page } " name="page">
+<input type="hidden" value="${page}" name="page">
+<input type="hidden" value="${searchCondition }" name="searchCondition">
+<input type="hidden" value="${keyword }" name="keyword">
 <table class="table">
     <tr>
         <th>글번호</th><td><c:out value="${board.boardNo }"/></td>
@@ -56,5 +56,4 @@ document.forms.myForm.submit();
 });
 </script>
 </form>
-<a href="boardList.do?page=${page } " class="btn btn-success">목록으로 이동하기</a>
-<jsp:include page="../public/Footer.jsp"/>
+<a href="boardList.do?page=${page}&searchCondition=${searchCondition}&keyword=${keyword}" class="btn btn-success">목록으로 이동하기</a>

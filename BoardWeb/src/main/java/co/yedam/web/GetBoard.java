@@ -11,6 +11,7 @@ import co.yedam.common.PageDTO;
 import co.yedam.service.BoardService;
 import co.yedam.service.BoardServiceImpl;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.SearchVO;
 
 public class GetBoard implements Control {
 
@@ -20,17 +21,18 @@ public class GetBoard implements Control {
 		//board.jsp 출력
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
 		
 		BoardService svc = new BoardServiceImpl();
 		BoardVO brd = svc.getBoard(Integer.parseInt(bno));
 		
 		req.setAttribute("board", brd);
 		req.setAttribute("page", page);
-		int totalCnt = svc.boardTotal();
-		PageDTO dto = new PageDTO(Integer.parseInt(page), totalCnt);
-		req.setAttribute("paging", dto);
+		req.setAttribute("searchCondition", sc);
+		req.setAttribute("keyword", kw);
 		
-		req.getRequestDispatcher("WEB-INF/view/board.jsp").forward(req, resp);
+		req.getRequestDispatcher("board/board.tiles").forward(req, resp);
 	}
 
 }

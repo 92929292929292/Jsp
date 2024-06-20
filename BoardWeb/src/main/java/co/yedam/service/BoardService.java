@@ -3,6 +3,7 @@ package co.yedam.service;
 import java.util.List;
 
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.MemberVO;
 import co.yedam.vo.SearchVO;
 
 //목록, 단건조회, 등록, 수정, 삭제
@@ -15,5 +16,12 @@ public interface BoardService {
 	boolean addBoard(BoardVO bvo);
 	boolean editBoard(BoardVO bvo);
 	boolean removeBoard(int bvo);
-	boolean checkMember(String id, String pw); 
+	MemberVO checkMember(String id, String pw); 
+	boolean addMember(MemberVO mvo);
+	
+	List<MemberVO> memberList();
+	boolean addMemberAjax(MemberVO mvo);
+	boolean checkMemberId(String id);
+	boolean removeMember(String id);
+	boolean editMember(MemberVO mvo);
 }

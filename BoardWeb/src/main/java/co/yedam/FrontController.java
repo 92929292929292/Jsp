@@ -11,21 +11,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
+import co.yedam.web.AddReply;
 import co.yedam.web.AddStudent;
 import co.yedam.web.Addboard;
+import co.yedam.web.AjaxForm;
 import co.yedam.web.BoardForm;
 import co.yedam.web.BoardList;
+import co.yedam.web.CheckIdAjax;
+import co.yedam.web.Gaip;
+import co.yedam.web.GaipForm;
 import co.yedam.web.GetBoard;
 import co.yedam.web.LogoutControl;
 import co.yedam.web.MainControl;
+import co.yedam.web.MemberAddAjax;
+import co.yedam.web.MemberAjax;
+import co.yedam.web.MemberList;
 import co.yedam.web.ModifyBoard;
 import co.yedam.web.ModifyForm;
 import co.yedam.web.ProductControl;
 import co.yedam.web.RemoveBoard;
 import co.yedam.web.RemoveBoard2;
+import co.yedam.web.RemoveReply;
+import co.yedam.web.ReplyList;
+import co.yedam.web.ScriptForm;
 import co.yedam.web.StudentForm;
 import co.yedam.web.loginControl;
 import co.yedam.web.loginForm;
+import co.yedam.web.modAjax;
+import co.yedam.web.removeIdAjax;
 
 //front -> 요청 url(*.do) - 실행컨트롤 매칭.
 //main.do -> FrontController -> /web-inf/public/main.jsp
@@ -64,6 +77,28 @@ public class FrontController extends HttpServlet{
 		map.put("/login.do", new loginControl());
 		//로그아웃 기능 
 		map.put("/logout.do", new LogoutControl());
+		//회원가입 사이트
+		map.put("/gaipForm.do", new GaipForm());
+		map.put("/gaip.do", new Gaip());
+		//회원목록(관리자템플릿)
+		map.put("/memberList.do", new MemberList());
+		
+		//자바스크립트 연습용 페이지
+		map.put("/script.do", new ScriptForm());
+		//아작스 페이지
+		map.put("/ajax.do", new AjaxForm());
+		//json 문자열 반환
+		map.put("/membersAjax.do", new MemberAjax());
+		map.put("/addAjax.do", new MemberAddAjax());
+		map.put("/checkIdAjax.do", new CheckIdAjax());
+		map.put("/removeIdAjax.do", new removeIdAjax());
+		map.put("/modAjax.do", new modAjax());
+		
+		//댓글관련
+		map.put("/replyListJson.do", new ReplyList());
+		map.put("/removeReply.do", new RemoveReply());
+		map.put("/addReply.do", new AddReply());
+		
 	}
 	
 	@Override

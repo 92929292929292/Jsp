@@ -3,11 +3,8 @@ package co.yedam.common;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import co.yedam.mapper.BoardMapper;
-import co.yedam.service.BoardService;
-import co.yedam.service.BoardServiceImpl;
-import co.yedam.vo.BoardVO;
-import co.yedam.vo.SearchVO;
+import co.yedam.mapper.ReplyMapper;
+import co.yedam.vo.ReplyVO;
 
 public class AppTest {
 	public static void main(String[] args) {
@@ -15,7 +12,34 @@ public class AppTest {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		
 		//interface - 구현객체.
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+//		ReplyVO rvo = mapper.selectReply(1);
+//		mapper.selectList(1).forEach(reply -> System.out.println(reply));
+//		System.out.println(rvo);
+		
+//		try {
+//			if(mapper.deleteReply(2) == 1) {
+//			System.out.println("입력성공");
+//			}
+//		} catch (Exception e) {
+//			System.out.println("예외 발생.");
+//		}
+		
+//		ReplyVO rvo = new ReplyVO();
+//		rvo.setBoardNo(2);
+//		rvo.setReply("뭐");
+//		rvo.setReplyer("user01");
+//		
+//		mapper.insertReply(rvo);
+		
+//		try {
+//			if(mapper.insertReply(rvo) == 1) {
+//			System.out.println("입력성공");
+//			}
+//		} catch (Exception e) {
+//			System.out.println("예외 발생.");
+//		}
+		
 //		bvo.setTitle("안녕");
 //		bvo.setContent("감사해요");
 //		bvo.setWriter("user11");
@@ -25,9 +49,9 @@ public class AppTest {
 		
 //		sqlSession.commit();
 		
-		SearchVO search = new SearchVO(1, "t", "깅");
+//		SearchVO search = new SearchVO(1, "t", "깅");
 		
-		mapper.boardListPaging(search).forEach(bvo -> System.out.println(bvo));
+//		mapper.boardListPaging(search).forEach(bvo -> System.out.println(bvo));
 		
 //		List<BoardVO>list = mapper.boardListPaging(1);
 //		for(BoardVO bvo2:list) {

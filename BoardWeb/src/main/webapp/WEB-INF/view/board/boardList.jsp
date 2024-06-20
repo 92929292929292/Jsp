@@ -79,14 +79,14 @@
 <div class="center">
   <div class="pagination">
   <c:if test="${paging.prev }">
-  	<a href="boardList.do?page=${paging.startPage-1 }&searchCondition=${searchCondition}&keyword=${keyword}">&laquo;</a>
+  	<a href="boardList.do?page=${paging.page-1 }&searchCondition=${searchCondition}&keyword=${keyword}">&laquo;</a>
   </c:if>
   <c:forEach var="p" begin="${paging.startPage }" end="${paging.endPage }">
   	<a href="boardList.do?page=${p }&searchCondition=${searchCondition}&keyword=${keyword}" class="${p == paging.page ? 'active' : ''}"><c:out value="${p }"/></a>
   </c:forEach>
   
   <c:if test="${paging.next }">
-  	<a href="boardList.do?page=${paging.startPage+1 }&searchCondition=${searchCondition}&keyword=${keyword}">&raquo;</a>
+  	<a href="boardList.do?page=${paging.page+1 }&searchCondition=${searchCondition}&keyword=${keyword}">&raquo;</a>
   </c:if>
   </div>
 </div>

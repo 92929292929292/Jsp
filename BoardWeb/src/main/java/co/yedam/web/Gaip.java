@@ -5,35 +5,37 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import co.yedam.common.Control;
 import co.yedam.service.BoardService;
 import co.yedam.service.BoardServiceImpl;
 import co.yedam.vo.MemberVO;
 
-public class loginControl implements Control {
+public class Gaip implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
-		BoardService bsv = new BoardServiceImpl();
-		MemberVO mvo = bsv.checkMember(id, pw);
-		if(mvo != null) {
-			//로그인 성공
-			HttpSession session = req.getSession();
-			session.setAttribute("logId", id);
-			
-			if(mvo.getResponsibility().equals("User")) {
-				resp.sendRedirect("main.do");
-			} else if(mvo.getResponsibility().equals("Admin")) {
-				resp.sendRedirect("memberList.do");
-			}
+		String nm = req.getParameter("name");
+		
+		BoardService bs = new BoardServiceImpl();
+		MemberVO mvo = new MemberVO();
+		
+		mvo.setUserId(id);
+		mvo.setUserPw(pw);
+		mvo.setUserName(nm);
+
+		
+		if (bs.addMember(mvo)) {
+			System.out.println("정상등록...");
+			resp.sendRedirect("boardList.do");
 		} else {
-			//로그인 실패
-			resp.sendRedirect("loginForm.do");
+			System.out.println("등록실패...");
+			req.setAttribute("message", "처리중 오류가 발생.");
+			req.getRequestDispatcher("member/gaipForm.tiles").forward(req, resp);
 		}
 	}
 
-}
+	}
+
